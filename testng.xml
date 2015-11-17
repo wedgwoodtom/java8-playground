@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Event Listener Integration Tests" configfailurepolicy="continue">
+    <test verbose="10" name="Event Listener Integration Tests" annotations="JDK" parallel="none">
+        <packages>
+            <package name="com.theplatform.cs.comcast.wholesale.event.listener.integration.*"/>
+        </packages>
+    </test>
+</suite>
