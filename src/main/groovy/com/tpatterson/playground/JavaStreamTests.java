@@ -5,8 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Year;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,10 +27,11 @@ public class JavaStreamTests
     public void setup()
     {
         movieList = Arrays.asList(
-                new Movie("Star Wars 1", "MV001"),
-                new Movie("Star Wars 2", "MV002"),
-                new Movie("Star Wars 3", "MV003"),
-                new Movie("Chicken Run", "MV004")
+                new Movie("Star Wars 1", "MV001", "SciFi"),
+                new Movie("Star Wars 2", "MV002", "SciFi"),
+                new Movie("Star Wars 3", "MV003", "SciFi"),
+                new Movie("Chicken Run", "MV004", "Animated"),
+                new Movie("Saw", "MV005", "Horror")
         );
     }
 
@@ -102,6 +105,17 @@ public class JavaStreamTests
     }
 
 
+//           roster
+//                .stream()
+//                .filter(
+//                        p -> p.getGender() == Person.Sex.MALE
+//                                && p.getAge() >= 18
+//                                && p.getAge() <= 25)
+//                .map(p -> p.getEmailAddress())
+//                .forEach(email -> System.out.println(email));
+//
+
+
     @Test
     public void testSumming()
     {
@@ -163,11 +177,34 @@ public class JavaStreamTests
     }
 
     @Test
+    public void testPredicateAnd()
+    {
+        Predicate<Movie> horror = movie -> "Horror".equals(movie.getGenre());
+
+        Predicate<Movie> animated = movie -> {
+            return "Animated".equals(movie.getGenre());
+        };
+
+        List<Movie> movies = movieList.stream().filter(horror.or(animated)).collect(Collectors.toList());
+        movies.forEach((Movie s) -> System.out.println("Title:"+s.getTitle() +" and Id:"+s.getId()));
+    }
+
+
+    @Test
     public void testMapObjectToObject()
     {
         List<Employee> list = Employee.getEmpList();
         Stream<Player> players = list.stream().map(e -> new Player(e.id, e.name));
         players.forEach(p -> System.out.println(p.id + ", " + p.name));
+    }
+
+    @Test
+    public void testSortArray()
+    {
+        String[] strArray = {"abe","adb","deb","abc","ghi","acd","acg","acb"};
+        Arrays.sort(strArray,String::compareToIgnoreCase);
+        Arrays.stream(strArray).forEach(System.out::println);
+        Stream.of(strArray).forEach(s -> System.out.println(s));
     }
 
     @Test
@@ -191,19 +228,106 @@ public class JavaStreamTests
         System.out.println(b5);
     }
 
-    class IntegerComp implements Comparator<Integer>
+    @Test
+    public void testFunction()
     {
-        @Override
-        public int compare(Integer i1, Integer i2)
-        {
-            if (i1 >= i2)
-            {
-                return 1;
-            } else
-            {
-                return -1;
-            }
+        Function<Integer,String> ob = f1 -> "Age:"+f1;
+        System.out.println(ob.apply(20));
+    }
+
+
+    @Test
+    public void testLambdaCalculator()
+    {
+        Calculator cal =(int a, int b) -> a+b;
+        int res = cal.add(5, 6);
+        System.out.println(res);
+    }
+
+    @Test
+    public void testLambdaComparitor()
+    {
+        Comparator<Movie> comp= (Movie m1, Movie m2) -> m1.getTitle().compareTo(m2.getTitle());
+        Collections.sort(movieList, comp);
+        System.out.println("...after sorting...");
+        for(Movie m : movieList){
+            System.out.println(m.getTitle());
+        }
+
+    }
+
+    @Test
+    public void testForEach()
+    {
+       // 1, Consumer interface example
+       Consumer<Movie> style = (Movie s) -> System.out.println("Title:"+s.getTitle() +" and Id:"+s.getId());
+       movieList.forEach(style);
+
+       // 2, method reference
+       movieList.forEach(Movie::printData);
+
+       // 3, lambda
+       movieList.forEach(m -> m.printData());
+    }
+
+    @Test
+    public void testOptional()
+    {
+        Movie movie = new Movie("title", "id", "genre");
+        movie.setDescription(null);
+
+        String movieDescription = movie.getDescription().orElse("None");
+        Assert.assertTrue(movieDescription.equals("None"));
+
+        movie.setDescription("description");
+        movieDescription = movie.getDescription().orElse("None");
+        Assert.assertTrue(movieDescription.equals("description"));
+    }
+
+
+    @Test
+    public void testYear()
+    {
+        System.out.println("Year.now():"+Year.now());
+        System.out.println("Year.MAX_VALUE:"+Year.MAX_VALUE);
+        System.out.println("Year.isLeap(2014):"+Year.isLeap(2014));
+        System.out.println("Year.isLeap(2016):"+ Year.isLeap(2016));
+    }
+
+    @Test
+    public void testConcatStream()
+    {
+        List<String> list1 = Arrays.asList("A1","A2","A3");
+        List<String> list2 = Arrays.asList("B1","B2","B3");
+        Stream<String> resStream = Stream.concat(list1.stream(), list2.stream());
+        resStream.forEach(s->System.out.println(s));
+    }
+
+    @Test
+    public void testStreamOf()
+    {
+        Stream.of("Ram","Shyam","Mohan").forEach(s->System.out.println(s));
+    }
+
+    @Test
+    public void testFlatmap()
+    {
+        // Stream.flatMap returns the stream object. We need to pass a function as an argument.
+        // Function will be applied to each element of stream.
+        List<String> list1 = Arrays.asList("AAA","BBB");
+        List<String> list2 = Arrays.asList("CCC","DDD");
+        Stream.of(list1,list2).flatMap(list -> list.stream()).forEach(s->System.out.println(s));
+
+    }
+
+    @Test
+    public void testStreamToArray()
+    {
+        Object[] ob = Stream.of("A","B","C","D").toArray();
+        for (Object o : ob) {
+            System.out.println(o.toString());
         }
     }
 
 }
+
