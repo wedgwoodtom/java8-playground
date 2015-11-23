@@ -61,4 +61,15 @@ public class Movie
     {
         System.out.println("Title:"+getTitle() +" and Id:"+getId());
     }
+
+    @Override
+    public String toString()
+    {
+        return "Movie{" +
+            "title='" + title + '\'' +
+            ", id='" + id + '\'' +
+            ", genre='" + genre + '\'' +
+            ", description=" + description +
+            '}';
+    }
 }
