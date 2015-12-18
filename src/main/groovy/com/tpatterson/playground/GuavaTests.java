@@ -3,11 +3,14 @@ package com.tpatterson.playground;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.*;
+import com.theplatform.cs.wholesale.event.object.Asset;
 import org.testng.Assert;
 import com.google.common.base.Joiner;
 import org.testng.annotations.Test;
 
+import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GuavaTests
@@ -74,8 +77,23 @@ public class GuavaTests
         table.put(2, "a", "2a");
         table.put(2, "b", "2b");
         Table transponedTable = Tables.transpose(table);
-
-        
     }
+
+
+    @Test
+    public void testListPartition()
+    {
+        List<String> bigList = Lists.newArrayList("A", "B", "C", "D", "E", "F");
+
+        List<List<String>> batchedList = Lists.partition(bigList, 2);
+        int totalBatches = 0;
+        for (List<String> batch : batchedList)
+        {
+            totalBatches += 1;
+        }
+
+        Assert.assertTrue(totalBatches==3);
+    }
+
 
 }

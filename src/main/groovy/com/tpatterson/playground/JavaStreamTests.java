@@ -42,8 +42,9 @@ public class JavaStreamTests
     public void testStreamToObjectMap()
     {
         Map<String, Movie> titleToMovieMap =
-                movieList.stream().collect(
-                        Collectors.toMap(Movie::getTitle, movie -> movie));
+                movieList
+                    .stream()
+                    .collect(Collectors.toMap(Movie::getTitle, movie -> movie));
 
         Assert.assertTrue(titleToMovieMap.size() == 4);
     }
@@ -73,7 +74,9 @@ public class JavaStreamTests
     public void testStreamToStringMap()
     {
         Map<String, String> titleToMovieMap =
-                movieList.stream().collect(
+                movieList
+                    .stream()
+                    .collect(
 //                        Collectors.toMap(Movie::getTitle, movie -> movie.id));
                         Collectors.toMap(Movie::getTitle, Movie::getId));
 
@@ -87,7 +90,10 @@ public class JavaStreamTests
     public void testFilterStreamToObject()
     {
         Movie desiredMovie =
-                movieList.stream().filter(movie -> movie.getId().equals("MV003")).findFirst().get();
+                movieList
+                    .stream()
+                    .filter(movie -> movie.getId().equals("MV003"))
+                    .findFirst().get();
 
         Assert.assertTrue(desiredMovie.getId().equals("MV003"));
     }
@@ -99,7 +105,10 @@ public class JavaStreamTests
     public void testFilterStreamToCollection()
     {
         List<Movie> starWarsMovies =
-                movieList.stream().filter(movie -> movie.getTitle().startsWith("Star Wars")).collect(Collectors.toList());
+                movieList
+                    .stream()
+                    .filter(movie -> movie.getTitle().startsWith("Star Wars"))
+                    .collect(Collectors.toList());
 
         Assert.assertTrue(starWarsMovies.size() == 3);
     }
@@ -120,7 +129,9 @@ public class JavaStreamTests
     public void testSumming()
     {
         List<Integer> list = Arrays.asList(30, 10, 20, 35);
-        int result = list.stream().collect(Collectors.summingInt(i -> i));
+        int result = list
+            .stream()
+            .collect(Collectors.summingInt(i -> i));
         Assert.assertTrue(result == 95);
     }
 
@@ -133,9 +144,13 @@ public class JavaStreamTests
         int min;
 
         //Get Max
-        max = list.stream().collect(Collectors.maxBy(new IntegerComp())).get();
+        max = list
+            .stream()
+            .collect(Collectors.maxBy(new IntegerComp())).get();
         //Get Min
-        min = list.stream().collect(Collectors.minBy(new IntegerComp())).get();
+        min = list
+            .stream()
+            .collect(Collectors.minBy(new IntegerComp())).get();
 
         Assert.assertTrue(max == 35);
         Assert.assertTrue(min == 10);
@@ -173,7 +188,9 @@ public class JavaStreamTests
         List<Employee> list = Employee.getEmpList();
         Predicate<Employee> filterPredicate = e -> e.id > 1 && e.sal < 6000;
         Consumer<Employee> printConsumer = e -> System.out.println(e.id + ", " + e.sal);
-        list.stream().filter(filterPredicate).forEach(printConsumer);
+        list.stream()
+            .filter(filterPredicate)
+            .forEach(printConsumer);
     }
 
     @Test
@@ -185,7 +202,10 @@ public class JavaStreamTests
             return "Animated".equals(movie.getGenre());
         };
 
-        List<Movie> movies = movieList.stream().filter(horror.or(animated)).collect(Collectors.toList());
+        List<Movie> movies = movieList.stream()
+            .filter(horror
+                    .or(animated))
+            .collect(Collectors.toList());
         movies.forEach((Movie s) -> System.out.println("Title:"+s.getTitle() +" and Id:"+s.getId()));
     }
 
@@ -268,6 +288,10 @@ public class JavaStreamTests
 
        // 3, lambda
        movieList.forEach(m -> m.printData());
+
+       movieList.forEach(m -> {
+               m.printData();
+           });
     }
 
     @Test
