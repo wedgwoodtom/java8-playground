@@ -19,7 +19,7 @@ import java.util.stream.Stream;
  * See some of the following:
  * http://www.concretepage.com/java/jdk-8/
  */
-public class JavaStreamTests
+public class Java8StreamTests
 {
     private List<Movie> movieList = new ArrayList<>();
 
@@ -203,7 +203,8 @@ public class JavaStreamTests
         };
 
         List<Movie> movies = movieList.stream()
-            .filter(horror
+            .filter(
+                horror
                     .or(animated))
             .collect(Collectors.toList());
         movies.forEach((Movie s) -> System.out.println("Title:"+s.getTitle() +" and Id:"+s.getId()));
