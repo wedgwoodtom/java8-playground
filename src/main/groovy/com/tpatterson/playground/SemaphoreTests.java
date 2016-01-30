@@ -1,5 +1,6 @@
 package com.tpatterson.playground;
 
+import com.theplatform.module.crypto.aes.PasswordAes;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -30,6 +31,23 @@ public class SemaphoreTests
         connectionLimiter.release(null);
     }
 
+
+    @Test
+    public void testPasswordEncrypt() throws Exception
+    {
+        // TODO: MOVE this
+        PasswordAes passwordAes = new PasswordAes();
+
+        PasswordAes passwordAes2 = new PasswordAes();
+        String decrypted = passwordAes2.decrypt("Ny91npt/mVyxp2OreJvhmw==");
+        System.out.println("decrypted='"+decrypted+"'");
+
+        decrypted = passwordAes2.decrypt("uLSWdtgvmtEiMFhQbvzNEg==");
+        System.out.println("decrypted='"+decrypted+"'");
+
+        String enc = passwordAes2.encrypt("Admin!!!");
+
+    }
 
     @Test
     public void testSemaphorePrintManagerEx() throws IOException, InterruptedException
