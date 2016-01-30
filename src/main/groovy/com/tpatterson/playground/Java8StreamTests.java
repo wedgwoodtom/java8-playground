@@ -366,5 +366,73 @@ public class Java8StreamTests
     }
 
 
+
+    /*
+    Look at this sort of processing to see if it makes sense.
+
+    @Override
+    public void receiveNotifications(@CheckForNull List<Notification> notifications, @Nonnull NotificationCommitter committer)
+    {
+        LOG.info("Received [" + notifications.size() + "] notifications for [" + getClientId() + "]");
+
+        if (CollectionUtils.isEmpty(notifications))
+        {
+            return;
+        }
+
+        AssetIdentifiers assetIdentifiersBatch = new AssetIdentifiers();
+
+        try
+        {
+            // group notifications by type
+            Map<String, List<Notification>> notificationsByType = notifications.stream().collect(
+                Collectors.groupingBy(Notification::getObjectType));
+
+            // process notifications by type in the prescribed order
+            TYPE_PROCESSING_ORDER.stream()
+                .map(Class::getSimpleName)                      // convert class to string objectType
+                .map(notificationsByType::get)                  // get notifications for that objectType
+                .filter(CollectionUtils::isNotEmpty)            // skip types with no notifications
+                .map(this::processTypeNotifications)            // process notifications for a single type and collect AssetIdentifiers
+                .forEachOrdered(assetIdentifiersBatch::addAll); // collect all AssetIdentifiers into a batch
+        }
+        finally
+        {
+            // update assets for all of the processed notification events
+            assetUpdateProcessor.updateAssets(assetIdentifiersBatch);
+            // move the notification sequence marker
+            committer.commit();
+        }
+    }
+
+    @Nonnull
+    protected AssetIdentifiers processIds(@Nonnull Collection<URI> eventIds)
+    {
+        LOG.info(toString() + " processing " + eventIds.size() + " eventIds");
+
+        AssetIdentifiers assetIdentifiers = new AssetIdentifiers();
+
+        if(!eventIds.isEmpty())
+        {
+            Map<URI, T> dataMap = loadData(eventIds);
+
+            // process each id and collect the sparse object data to be written back to the data service
+            List<T> updateObjects = eventIds.stream()
+                .map(id -> processId(id, dataMap, assetIdentifiers))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+            if(!updateObjects.isEmpty())
+            {
+                getDataServiceFacade().update(updateObjects);
+            }
+        }
+
+        return assetIdentifiers;
+    }
+
+
+     */
+
+
 }
 
