@@ -14,12 +14,7 @@ public class ToStringTests
         Assert.assertEquals(ObjectUtils.toString(nullMovie), "");
 
         Movie movie = new Movie("title", "id", "genre");
-
-        String utilsToString = ObjectUtils.toString(movie);
-        Assert.assertTrue(utilsToString.contains("title"));
-
-        System.out.println(utilsToString);
-
+        Assert.assertTrue(ObjectUtils.toString(movie).contains("title"));
     }
 
 }
