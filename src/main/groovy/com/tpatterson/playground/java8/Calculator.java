@@ -1,4 +1,4 @@
-package com.tpatterson.playground;
+package com.tpatterson.playground.java8;
 
 public interface Calculator
 {

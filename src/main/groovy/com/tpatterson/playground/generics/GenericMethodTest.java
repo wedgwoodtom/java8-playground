@@ -1,4 +1,4 @@
-package com.tpatterson.playground;
+package com.tpatterson.playground.generics;
 
 
 import java.util.Arrays;

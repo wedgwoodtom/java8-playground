@@ -1,4 +1,4 @@
-package com.tpatterson.playground;
+package com.tpatterson.playground.generics;
 
 /**
  * Created by tom.patterson on 11/3/16.
