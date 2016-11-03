@@ -42,4 +42,103 @@ public class Person
         this.isEmployed = newIsEmployed;
         this.isHomewOwner = newIsHomeOwner;
     }
+
+
+    /**
+     * Sometimes done as an inner-class
+     */
+    public static class Builder
+    {
+        private String lastName;
+        private String firstName;
+        private String middleName;
+        private String salutation;
+        private String suffix;
+        private String streetAddress;
+        private String city;
+        private String state;
+        private boolean isFemale;
+        private boolean isEmployed;
+        private boolean isHomeOwner;
+
+        public Builder()
+        {
+        }
+
+        public Builder lastName(String lastName)
+        {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder firstName(String firstName)
+        {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder middleName(String middleName)
+        {
+            this.middleName = middleName;
+            return this;
+        }
+
+        public Builder salutation(String salutation)
+        {
+            this.salutation = salutation;
+            return this;
+        }
+
+        public Builder suffix(String suffix)
+        {
+            this.suffix = suffix;
+            return this;
+        }
+
+        public Builder streetAddress(String streetAddress)
+        {
+            this.streetAddress = streetAddress;
+            return this;
+        }
+
+        public Builder city(String city)
+        {
+            this.city = city;
+            return this;
+        }
+
+        public Builder state(String state)
+        {
+            this.state = state;
+            return this;
+        }
+
+        public Builder female(boolean female)
+        {
+            this.isFemale = female;
+            return this;
+        }
+
+        public Builder employed(boolean employed)
+        {
+            this.isEmployed = employed;
+            return this;
+        }
+
+        public Builder homeOwner(boolean homeOwner)
+        {
+            this.isHomeOwner = homeOwner;
+            return this;
+        }
+
+        public Person build()
+        {
+            return new Person(
+                lastName, firstName, middleName, salutation, suffix, streetAddress, city, state, isFemale, isEmployed,
+                isHomeOwner);
+        }
+    }
+
+
+
 }

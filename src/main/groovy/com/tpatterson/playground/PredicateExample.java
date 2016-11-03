@@ -1,5 +1,7 @@
 package com.tpatterson.playground;
 
+import com.tpatterson.playground.pojo.Apple;
+import com.tpatterson.playground.pojo.Employee;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

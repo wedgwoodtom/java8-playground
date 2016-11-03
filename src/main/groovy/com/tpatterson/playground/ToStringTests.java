@@ -1,5 +1,6 @@
 package com.tpatterson.playground;
 
+import com.tpatterson.playground.pojo.Movie;
 import org.apache.commons.lang.ObjectUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;

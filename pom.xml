@@ -57,7 +57,7 @@
         <dependency>
             <groupId>com.theplatform.cs.comcast</groupId>
             <artifactId>pl-test-comcast-event-data-framework</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- condition poller -->

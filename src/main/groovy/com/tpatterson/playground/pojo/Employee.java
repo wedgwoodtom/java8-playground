@@ -1,4 +1,4 @@
-package com.tpatterson.playground;
+package com.tpatterson.playground.pojo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,10 @@ package com.tpatterson.playground.builder;
 
 /**
  * Too many params - use a builder!
+ * <p>
+ * This is an external class builder, but some folks make it as an internal class as well.
+ *
+ * Fluent-style
  */
 
 public class PersonBuilder
@@ -22,73 +26,73 @@ public class PersonBuilder
     {
     }
 
-    public PersonBuilder setLastName(String lastName)
+    public PersonBuilder lastName(String lastName)
     {
         this.lastName = lastName;
         return this;
     }
 
-    public PersonBuilder setFirstName(String firstName)
+    public PersonBuilder firstName(String firstName)
     {
         this.firstName = firstName;
         return this;
     }
 
-    public PersonBuilder setMiddleName(String middleName)
+    public PersonBuilder middleName(String middleName)
     {
         this.middleName = middleName;
         return this;
     }
 
-    public PersonBuilder setSalutation(String salutation)
+    public PersonBuilder salutation(String salutation)
     {
         this.salutation = salutation;
         return this;
     }
 
-    public PersonBuilder setSuffix(String suffix)
+    public PersonBuilder suffix(String suffix)
     {
         this.suffix = suffix;
         return this;
     }
 
-    public PersonBuilder setStreetAddress(String streetAddress)
+    public PersonBuilder streetAddress(String streetAddress)
     {
         this.streetAddress = streetAddress;
         return this;
     }
 
-    public PersonBuilder setCity(String city)
+    public PersonBuilder city(String city)
     {
         this.city = city;
         return this;
     }
 
-    public PersonBuilder setState(String state)
+    public PersonBuilder state(String state)
     {
         this.state = state;
         return this;
     }
 
-    public PersonBuilder setFemale(boolean female)
+    public PersonBuilder female(boolean female)
     {
         this.isFemale = female;
         return this;
     }
 
-    public PersonBuilder setEmployed(boolean employed)
+    public PersonBuilder employed(boolean employed)
     {
         this.isEmployed = employed;
         return this;
     }
 
-    public PersonBuilder setHomeOwner(boolean homeOwner)
+    public PersonBuilder homeOwner(boolean homeOwner)
     {
         this.isHomeOwner = homeOwner;
         return this;
     }
 
-    public Person createPerson()
+    public Person build()
     {
         return new Person(
             lastName, firstName, middleName, salutation, suffix, streetAddress, city, state, isFemale, isEmployed,
