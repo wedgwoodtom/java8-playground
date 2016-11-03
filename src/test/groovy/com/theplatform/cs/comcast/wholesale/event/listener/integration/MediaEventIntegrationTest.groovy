@@ -1,5 +1,8 @@
 package com.theplatform.cs.comcast.wholesale.event.listener.integration
 
+import com.theplatform.data.api.client.query.ById
+import com.theplatform.data.api.client.query.Query
+import com.theplatform.data.api.exception.ObjectNotFoundException
 import com.tpatterson.cs.comcast.wholesale.event.listener.integration.spring.IntegrationTestConfiguration
 import com.tpatterson.cs.comcast.wholesale.event.poller.AssetPoller
 import com.theplatform.cs.wholesale.event.object.Asset
@@ -12,6 +15,7 @@ import org.apache.commons.lang.RandomStringUtils
 import org.apache.commons.lang.time.DateUtils
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
+import org.testng.Assert
 import org.testng.annotations.AfterClass
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.Test
@@ -70,6 +74,22 @@ class MediaEventIntegrationTest extends AbstractTestNGSpringContextTests
 
         // sleep in order to prevent create/update in less than one second
         sleep(1000)
+    }
+
+    @Test
+    public void testGetThrowsErrow()
+    {
+        try
+        {
+//            Media media = mediaClient.get(URI.create("http://data.media.sandbox.theplatform.com/media/data/Media/33659904666"), null)
+            Media media = mediaClient.get(null, null, [new ById(URI.create("http://data.media.sandbox.theplatform.com/media/data/Media/33659904666"))] as Query[], null, null)
+
+            Assert.fail()
+        }
+        catch(ObjectNotFoundException error)
+        {
+            error.printStackTrace()
+        }
     }
 
     @Test
