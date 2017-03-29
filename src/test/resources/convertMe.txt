@@ -1,0 +1,304 @@
+II comments for grading
+PERSONAL ENGAGEMENT
+1.	Evidence of personal engagement
+2.	Evidence of personal input and initiative, as well as adaptability
+3.	Clear evidence of engagement and creativity
+4.	Strong evidence of personal engagement
+5.	Evidence of engagement, input and initiative. Original topic
+6.	Evidence of engagement is visible throughout the report
+7.	The student is showing engagement by showing personal input in the design of his experiment
+8.	Original design by the student but little evidence shown of personal engagement. Personal input is shown later in the document
+9.	Student shows little sign of personal engagement
+10.	The student is showing engagement but does not justify the choice of the investigation
+11.	Evidence of personal engagement limited
+12.	Fairly simple research question, but the lab has been carefully designed and all aspect of the investigation done with care and thoughts from the student
+13.	The student selected an original topic but does not really explain her interest, or justify her choice.
+14.	Student shows some evidence of engagement, although not well developed. 
+15.	Some evidence of student engagement
+16.	Some evidence of engagement, limited
+17.	Some evidence of engagement, fairly limited, the research question does not show creativity
+18.	The student does not show personal engagement. There is no justification given for the use of…
+19.	
+EXPLORATION
+Research Question
+20.	Focused research question
+21.	Research question relevant and focused
+22.	Clear research question
+23.	Relevant research question but not focused
+24.	Question not focused
+25.	Interesting topic but it might be difficult to make a meaningful comparison
+26.	Focused research question, fairly trivial
+27.	Research question not fully focused
+28.	This research question should be stated earlier
+29.	The research question is not fully focused, but relevant.
+30.	The research questions could be more specific on …
+31.	Research question not fully focused and very basic, not quite to the level expected for this investigation
+32.	Research question does not clearly identify variables
+33.	There is no stated specific research question, besides the title of the investigation.
+34.	Not a legitimate research question.
+35.	The simulation chosen by the student is not allowing for a proper investigation
+36.	It is unclear how the ……… could be compared
+37.	Student could have explained his exploration to show personal engagement and state a new research question
+
+Background-Information
+38.	Strong background information
+39.	Relevant background information.
+40.	Background information accurate, some repetition
+41.	Legitimate background research for experimental design
+42.	Vague background
+43.	Relevant background information, but limited to ...
+44.	The student gives relevant background information and evidence of initiative in the design.
+45.	The background information does not relate to the research questions chosen by the student
+46.	Role of …vague
+47.	No background information on the organism chosen or how to grow it.
+48.	Growth curve of E. coli could have been added
+49.	Specify type of E coli missing
+50.	Reference missing
+51.	The student does not address the possible role of ...
+52.	The influence of…could be developed
+53.	The background information does not really justify the research question
+54.	Is there any background information on …?
+55.	Student does not consider ...
+56.	Background on the molecules ….could be added
+57.	Background information accurate, some repetition
+58.	Confusion
+59.	Unclear if this information is from hypothesis or source?
+60.	
+Variables
+61.	The student identifies relevant variables and shows understanding of the importance of controlled variables.
+62.	Clear presentation of variables, evidence of controlled variables
+63.	Relevant variables
+64.	Clear variables
+65.	Evidence of controlled variables
+66.	The student is attempting to control variables, and design the experimental set-up with details.
+67.	Doing a preliminary experiment would have answered this
+68.	Attempt to control variables
+69.	Student attempt to control variables. Student clearly explain variables and plan f or sufficient raw data.
+70.	The student shows the importance of controlled variables
+71.	The student attempts to control the experiment, but the variables are irrelevant to the investigation.
+72.	Evidence of effort to control variables.
+73.	… is manipulated variable
+74.	All legitimate controlled variables but no specific values are given
+75.	Dependent variable not stated
+76.	Other control could be …
+77.	Variables are controlled but are not optimal as stated in the design. 
+78.	What is the control? How does the student know …
+79.	The student is not clear on what will be measured
+80.	Some attempt to control variables. It is not specified how …
+81.	Confusing statement. A controlled variable should be ...
+82.	What is measured? How is growth evaluated?
+83.	Unclear if variable is.. . Only one independent variable should be considered
+84.	What would be the controlled variables?
+85.	There is no information on the subjects (age...)
+
+Design/protocol
+86.	Clear experimental set-up showing design by the student. The experiment could be done by
+87.	someone else
+88.	Student shows understanding of doing preliminary work while designing a lab
+89.	The student designed a way to measure bacterial growth
+90.	Experimental design detailed and easy to follow. 
+91.	Good illustration to understand experiment
+92.	Drawing of the set-up helpful
+93.	The student uses … conditions and … trials in order to generate enough data.
+94.	Protocol easy to follow. The student is giving detailed information
+95.	Clear instructions. Somebody else could do the experiment
+96.	Protocol fairly easy to follow. Student collected data over a large amount of recording time in order to control variables
+97.	Step by step instructions easy to follow
+98.	Procedure unclear
+99.	Details on enzyme solution needed
+100.	It is unclear how the … could be compared
+101.	It is not specified how original enzyme solution were obtainedThis will not take into account …
+102.	Not indicated if it is f or solid or liquid culture, or how the student made it
+103.	Unclear how this research was done
+104.	Illustration might be more valuable if …
+105.	Needed: …
+106.	Explanation needed:
+107.	Needs detailed steps to show which variables is modified
+108.	Vague
+109.	Justification/explanation of steps missing. No explanation of the use of …
+110.	Specify volume instead of "large"
+111.	Student should explain and give references to the use of …(method)
+112.	Unclear what was tested
+113.	How will a correlation be seen?
+114.	Missing step
+115.	Instead of trying 2 similar experiment with 2 variables, one follow-up experiment could have been used, while focusing the whole investigation on one variable.
+116.	Not mentioned in material
+117.	Explanation of the reactions used is missing
+118.	Justification missing 
+119.	Contradictory with background information. Why not test…?
+120.	Illustration would help, in order f or somebody else to do the lab
+121.	2 plants and 2 conditions tested. Although it is an original design, it will not give sufficient data.
+122.	No justification for the choice made
+123.	The student attempts to give detailed directions but it would be hard to do the experiment
+124.	Steps are mixed-up
+125.	Student could have done preliminary experiment to have a range of … to use
+126.	The protocol cannot be followed.
+127.	Directions are missing
+128.	No uncertainty, no method to count colonies
+129.	What the student has done is unclear.
+130.	No mention of calibrating the oxygen probes. 
+131.	How was … measured/calculated?
+132.	Equipment used needs to be listed
+
+Safety
+133.	Evidence of safety considerations
+134.	Some evidence of safety consideration
+135.	Evidence of ethical/environmental consideration
+136.	Safety issues assessed, proper steps were taken
+137.	Accurate risk assessment
+138.	Evidence of safety/environment considerations.
+139.	The student is not mentioning using bleach before disposing bacteria.
+140.	Student is considering ethical issues and consent in working with human subjects
+141.	E coli solution should be also soaked in bleach solution
+142.	Some safety/environment considerations
+143.	Consideration of the ethical/environmental issues. Should have been addressed earlier in the report
+144.	The student addresses the need for consent on human subject, but could have detailed risk and ethical issues.
+145.	Names should not be visible.
+146.	The student shows some awareness of possible ethical issues
+
+ANALYSIS
+Raw data
+147.	Valid qualitative observations
+148.	Appropriate data presentation
+149.	Qualitative observations
+150.	Correct raw data presentation
+151.	Evidence of sufficient data collection
+152.	Appropriate representation of raw data
+153.	Raw data is very clear
+154.	Sufficient data
+155.	Appropriate data table although formatting not the best
+156.	Incorrect unit
+157.	Formatting
+158.	Data presentation fairly clear but with inaccuracies in headings/title
+159.	Unit missing
+160.	Missing:…
+161.	Raw data missing: how many counted/how many total?
+162.	There is some processes data in raw data table
+163.	Estimation of uncertainty linked to the specific design of the lab.
+164.	Uncertainty in measurement considered
+165.	Uncertainty in measurement is evaluated.
+166.	No uncertainty
+167.	Incorrect, no justifications of the values chosen
+168.	Uncertainty is not addressed.
+169.	Uncertainty unrealistic
+
+Processed data
+170.	Student is processing data and showing calculations
+171.	Choice and justification made by the student about the processing of data
+172.	Evidence of processed data with calculation of error and clear sample calculations
+173.	Explanation of calculations
+174.	The student is showing some data processing. Calculations are shown. One example of calculation would be sufficient
+175.	Detail of calculation of standard deviation not needed
+176.	No evidence of processed data or error
+177.	Standard deviation should be added in the data table
+178.	Justification of …is unclear
+179.	Too many decimals
+180.	Limited processed data due to having only one trial
+181.	No explanation of calculation of error: most deviant from average.
+182.	This data processing should be in another table.
+183.	There is no graph of process data which makes interpretation of data more difficult.
+184.	Standard deviation would be a better way to measure uncertainty
+185.	The student is processing data, calculating averages, but there is no indication of error, nor error bars to the graph.
+186.	Some data analysis but no discussion of error or controls
+187.	The student is showing calculation, and is attempting to process data. However the data is only qualitative
+188.	Student use 2 different ways to calculate uncertainty
+189.	The results of the calculation of uncertainty are incorrect
+190.	Calculation of uncertainty in unclear. Errors bars are larger than what raw data suggest
+
+Graph
+191.	Appropriate graph chosen
+192.	Appropriate choice of data representation
+193.	Adequate data presentation
+194.	The choice of graph does not allow looking at all data at once
+195.	Student could have represented … instead of … on the graph
+196.	Unclear what error was created. Another graph with all data point should be shown
+197.	Missing graph: what it should look like
+198.	Error bars missing
+199.	Bar graph is not the most appropriate here
+200.	Confusing graph
+201.	Error bars needed
+202.	Bar graph might be a better choice. Otherwise appropriate presentation
+203.	The graph is difficult to interpret with the absence of error bars
+
+EVALUATION
+Conclusion
+204.	The student attempts to discuss all data
+205.	Discussion of uncertainty and error
+206.	Showing understanding of the need of collecting enough data.
+207.	Student is linking experiment to original question and engagement part.
+208.	The student is interpreting his own data and making all possible conclusions.
+209.	Connection with scientific context made
+210.	Some valid interpretation of data
+211.	Students shows that testing of…should have been done before experiment.
+212.	The student has demonstrated … in that set-up
+213.	The data analysis is limited, there is no attempt to discuss …
+214.	Student understands the biological processes shown in his experiment, but the lack of accurate initial information and raw data (trials) in impacting the conclusion that can be made
+215.	Not enough data
+216.	No justification
+217.	This should have been considered in the design, and checked with the distributor. Results f rom
+218.	bacterial amylase should not be considered valid, unless the student determines the optimal
+219.	concentration of enzyme in his experiment
+220.	The report did not state the optimal pH of the enzyme
+221.	Standard deviation should be taken into account to discuss significance of data
+222.	To make the conclusion of which …is more effective, optimal concentrations should have been tested
+223.	Not justified
+224.	No interpretation possible
+225.	Doing a preliminary experiment would have answered this
+226.	The student could have collected more data, in order to get more specific answers.
+227.	No justification for being an outlier. No mention of expected growth
+228.	The student makes a conclusion about oxygen, which is not part of the investigation. 
+229.	Superficial discussion of data.
+230.	Some data analysis but no discussion of error or controls 
+231.	No error discussed.
+232.	This is not the stated research question
+233.	Interesting observation 
+234.	This is not the reason to be confident about the data.
+235.	Uncertainty is discussed.
+236.	Some data analysis but no discussion of error or controls
+237.	Errors bars should be discussed
+238.	Confusion
+239.	The students analyses his own data but does not take into consideration error to state if his results are inconclusive or not
+240.	This cannot be proven without discussing error and perform a statistical test.
+241.	There is no discussion about the size of the sample, which is missing
+242.	The student is unclear on the choice of …and on the expected results
+243.	The student does not propose an explanation f or her data
+
+Evaluation
+244.	Awareness of limitations
+245.	Error discussed. The student shows awareness of the limitations of this type of experiment
+246.	The conclusion is confused at time but the student clearly interpret his own data, reflects, and evaluate his own design.
+247.	Concrete and feasible improvement
+248.	Basic weaknesses identified. Clear presentation
+249.	Student understand the limitation of the experiment
+250.	Awareness of limitations and one solution is considered
+251.	Original experiment, but limited in the type of data that can be collected, which show in the conclusion. However, the student demonstrate understanding of the limitation of the experiment
+252.	Relevant weakness identified, improvement proposed
+253.	Suggestion for a follow-up experiment
+254.	Student understands limitations of the experiment
+255.	Realistic improvements proposed
+256.	This improvement could have been a preliminary part of the design
+257.	Student mentions … but does not emphasize that it is a major limitation in establishing a conclusion
+258.	No improvements proposed.
+259.	No mention of growing plant for longer time
+260.	Not a valid reason
+261.	Improvements are proposed but …
+262.	The student is showing some understanding of the limitations of the investigation
+263.	Student is aware of the limitation of genetics on human families, but does not show that it would always be an issue.
+264.	Student should propose another way to test antibacterial agents
+265.	Difference could also be correlated to …
+266.	The students analyses his own data but does not take into consideration error to state if his results are inconclusive or not
+267.	Student showing understanding of the lab, but could have tried some simple modifications of the initial design, within the scope of work of the II
+
+COMMUNICATION
+268.	Poor formatting
+269.	Unclear
+270.	Editing needed
+271.	Some repetitions
+272.	This part should be placed in a different part of the report
+273.	confusing, needs revision
+274.	vague 
+275.	title needed
+276.	needs editing
+277.	Convention: italic should be used
+278.	This part of the report is too long
+
