@@ -1,4 +1,4 @@
-package groovy.com.tpatterson.playground.featuretoggle;
+package com.tpatterson.playground.featuretoggle;
 
 import org.togglz.core.Feature;
 import org.togglz.core.annotation.EnabledByDefault;
