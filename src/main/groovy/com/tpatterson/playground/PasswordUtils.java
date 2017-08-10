@@ -19,7 +19,7 @@ public class PasswordUtils
     @Test
     public void testDecrypt() throws Exception
     {
-        String encryptedPassword = "1ip+oyixVyWrzaw8kret6FyymjqpvOW8FRBAbtSZB/U=";
+        String encryptedPassword = "dfCMevBhv/+UmgOKvi283LcKm5f+HGliH3ExU7MVGVw=";
         String decrypted = new PasswordAes().decrypt(encryptedPassword);
         System.out.println("decrypted '"+encryptedPassword+"' ='"+decrypted+"'");
     }
