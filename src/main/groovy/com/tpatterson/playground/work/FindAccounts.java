@@ -12,21 +12,18 @@ import java.util.stream.Collectors;
  */
 public class FindAccounts
 {
-
     @Test
     public void findMissingAccounts() throws Exception
     {
         String token = "eG5Finos1mLAavMcxwps8RDMYIDesBCC";
 
-        // Widevine
-//        String sea1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686907";
-//        String phl1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686892";
         // Fairplay - they are the same user creds
         // LWS - they are the same user creds
-        // ACLS - Adobe Cloud License Service - just calls GLR no direct key access, although 2 perms
+        // ACLS - Adobe Cloud License Service - just calls GLR no direct key access, although 2 different users
         // PLayReady - same user
-        String sea1User = "https://identity.auth.theplatform.com/idm/data/User/service/2689815";
-        String phl1User = "https://identity.auth.theplatform.com/idm/data/User/service/2689815";
+        // Widevine
+        String sea1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686907";
+        String phl1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686892";
 
         Result sea1Keys = get(buildUserKeysQuery(sea1User, token));
         Result phl1Keys = get(buildUserKeysQuery(phl1User, token));
