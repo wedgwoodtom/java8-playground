@@ -1,9 +1,13 @@
 package com.tpatterson.playground.work;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import org.apache.http.client.fluent.Request;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,18 +29,17 @@ public class FindAccounts
         String sea1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686907";
         String phl1User = "https://identity.auth.theplatform.com/idm/data/User/service/2686892";
 
-        Result sea1Keys = get(buildUserKeysQuery(sea1User, token));
-        Result phl1Keys = get(buildUserKeysQuery(phl1User, token));
+        QueryResult sea1Keys = getQueryResult(buildUserKeysQuery(sea1User, token));
+        QueryResult phl1Keys = getQueryResult(buildUserKeysQuery(phl1User, token));
 
-        List<Entry> missingKeys = sea1Keys.getEntries().stream()
-            .filter(entry -> !phl1Keys.getEntries().contains(entry))
+        List<DataObject> missingKeys = sea1Keys.getEntries().stream()
+            .filter(dataObject -> !phl1Keys.getEntries().contains(dataObject))
             .collect(Collectors.toList());
 
         System.out.println("PHL1 missing UserKey accounts: "+missingKeys.size());
-        for (Entry missingKey : missingKeys)
+        for (DataObject missingKey : missingKeys)
         {
-            String accountGet = missingKey.getOwnerId()+"?schema=1.3.0&form=cjson&pretty=true&fields=id,title&range=1-1&token="+token;
-            Entry account = getEntry(accountGet);
+            DataObject account = getDataObject(buildAccountGetFor(missingKey, token));
             System.out.println("Clone: " + missingKey.getId() +" to Account: "+ missingKey.getOwnerId() + " ("+account.getTitle()+")");
         }
     }
@@ -46,30 +49,61 @@ public class FindAccounts
        return "https://data.key.entitlement.theplatform.com/key/data/UserKey?form=cjson&sort=ownerId&schema=1.2.1&pretty=true&fields=id,ownerId&byUserId="+user+"&count=true&token="+token;
     }
 
-    private Result get(String url) throws Exception
+    private String buildAccountGetFor(DataObject dataObject, String token)
     {
-        String contents = Request.Get(url)
-            .execute()
-            .returnContent()
-            .asString();
-
-        Gson gson = new Gson();
-        return gson.fromJson(contents, Result.class);
+        return dataObject.getOwnerId()+"?schema=1.3.0&form=cjson&pretty=true&fields=id,title&range=1-1&token="+token;
     }
 
-    private Entry getEntry(String url) throws Exception
+    private QueryResult getQueryResult(String queryUrl) throws Exception
     {
-        String contents = Request.Get(url)
-            .execute()
-            .returnContent()
-            .asString();
-
         Gson gson = new Gson();
-        return gson.fromJson(contents, Entry.class);
+        return gson.fromJson(getResponseFor(queryUrl), QueryResult.class);
     }
 
+    private DataObject getDataObject(String dataObjectUrl) throws Exception
+    {
+        Gson gson = new Gson();
+        return gson.fromJson(getResponseFor(dataObjectUrl), DataObject.class);
+    }
 
-    class Entry {
+    // TODO: Move to using this model instead
+    public <T> T fromGET(String dataObjectUrl, Class<T> dataObjectClass)
+    {
+        return new Gson().fromJson(getResponseFor(dataObjectUrl), dataObjectClass);
+    }
+
+    private void throwIfError(String url, String contents)
+    {
+        Gson gson = new Gson();
+
+        ErrorResult result = gson.fromJson(contents, ErrorResult.class);
+        if (result.isException || result.responseCode!=200)
+        {
+            throw new RuntimeException("Error: "+contents+" in calling: "+url);
+        }
+    }
+
+    private String getResponseFor(String urlRequest)
+    {
+        String contents;
+        try
+        {
+            contents = Request.Get(urlRequest)
+                .execute()
+                .returnContent()
+                .asString();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException("Error in retrieving: "+urlRequest, e);
+        }
+
+        throwIfError(urlRequest, contents);
+        return contents;
+    }
+
+    class DataObject
+    {
         private String id;
         private String title;
         private String ownerId;
@@ -112,9 +146,9 @@ public class FindAccounts
             if (o == null || getClass() != o.getClass())
                 return false;
 
-            Entry entry = (Entry) o;
+            DataObject dataObject = (DataObject) o;
 
-            return ownerId != null ? ownerId.equals(entry.ownerId) : entry.ownerId == null;
+            return ownerId != null ? ownerId.equals(dataObject.ownerId) : dataObject.ownerId == null;
         }
 
         @Override
@@ -124,9 +158,10 @@ public class FindAccounts
         }
     }
 
-    class Result {
-        private int totalResults;
-        private List<Entry> entries;
+    class QueryResult
+    {
+        private int totalResults = 0;
+        private List<DataObject> entries = Collections.EMPTY_LIST;
 
         public int getTotalResults()
         {
@@ -138,14 +173,39 @@ public class FindAccounts
             this.totalResults = totalResults;
         }
 
-        public List<Entry> getEntries()
+        public List<DataObject> getEntries()
         {
             return entries;
         }
 
-        public void setEntries(List<Entry> entries)
+        public void setEntries(List<DataObject> entries)
         {
             this.entries = entries;
+        }
+    }
+
+    class ErrorResult {
+        private boolean isException = false;
+        private int responseCode = 200;
+
+        public boolean isException()
+        {
+            return isException;
+        }
+
+        public void setException(boolean exception)
+        {
+            isException = exception;
+        }
+
+        public int getResponseCode()
+        {
+            return responseCode;
+        }
+
+        public void setResponseCode(int responseCode)
+        {
+            this.responseCode = responseCode;
         }
     }
 
