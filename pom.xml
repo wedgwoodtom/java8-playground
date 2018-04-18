@@ -7,6 +7,7 @@
         <groupId>com.theplatform</groupId>
         <artifactId>theplatform</artifactId>
         <version>4.3.11</version>
+        <!--<version>5.0.2</version>-->
     </parent>
 
     <groupId>com.tpatterson.playground</groupId>
@@ -25,6 +26,8 @@
         <gmavenplus.version>1.5</gmavenplus.version>
         <groovy.version>2.4.5</groovy.version>
         <test-suite>testng.xml</test-suite>
+
+        <entitlement.api.version>3.4.6-SNAPSHOT</entitlement.api.version>
     </properties>
 
     <dependencies>
@@ -36,6 +39,12 @@
             <version>2.4.1.Final</version>
         </dependency>
 
+        <!-- Splunk API -->
+        <dependency>
+            <groupId>com.splunk</groupId>
+            <artifactId>splunk</artifactId>
+            <version>1.5.0</version>
+        </dependency>
 
 
         <!-- groovy dependencies -->
@@ -181,6 +190,24 @@
             <version>4.5.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+
+        <!--Entitlements-->
+        <dependency>
+            <groupId>com.theplatform.entitlement.service</groupId>
+            <artifactId>pl-entitlement-api</artifactId>
+            <version>${entitlement.api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theplatform.entitlement.service</groupId>
+            <artifactId>pl-entitlement-api-objects</artifactId>
+            <version>${entitlement.api.version}</version>
+        </dependency>
 
         <!-- logging -->
         <dependency>

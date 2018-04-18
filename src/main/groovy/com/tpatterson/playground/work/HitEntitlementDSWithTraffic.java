@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class HitEntitlementDSWithTraffic
 {
-    private static String RO_TOKEN = "_S-Rhp6GtaHsGi6Md1rQ4ZAeUKD48EDw";  // team.phobos@theplatform.com
-    private static String RW_TOKEN = "pzdNfLxWMl-ceZ7wdyrQYRCUgMCi4DDa";  // tom.patterson@theplatform.com for Prod account for Entitlement update
+    private static String RO_TOKEN = "BsAN9B3K3yUcDr769wosQXB4kOBi0JCK";  // team.phobos@theplatform.com
+    private static String RW_TOKEN = "udinx-bItYWKXt48dwpkUVBmQOCCoNDO";  // tom.patterson@theplatform.com for Prod account for Entitlement update
 
 
     private static long TEST_RUNTIME_MINUTES = 5;
