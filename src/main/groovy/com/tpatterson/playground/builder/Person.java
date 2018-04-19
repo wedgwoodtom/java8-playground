@@ -131,6 +131,8 @@ public class Person
             return this;
         }
 
+        // TODO: Could add a validate method that verify that we are building a valid Person
+
         public Person build()
         {
             return new Person(

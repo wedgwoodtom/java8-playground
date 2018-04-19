@@ -1,12 +1,11 @@
 package com.tpatterson.playground;
 
-import ch.qos.logback.classic.util.CopyOnInheritThreadLocal;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HttpClientTests
+public class FluentHttpClientTests
 {
 
     @Test

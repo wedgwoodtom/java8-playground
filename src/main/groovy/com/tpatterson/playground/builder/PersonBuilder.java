@@ -5,7 +5,19 @@ package com.tpatterson.playground.builder;
  * <p>
  * This is an external class builder, but some folks make it as an internal class as well.
  *
- * Fluent-style
+ *
+ *
+ * Another build-use example:
+ * String requestURL = ServiceUriBuilder.create()
+ .withUriBuilder(fairplayUrl, "/web/FairPlay")
+ .withAccount(accountId)
+ .withQueryParam("token", token)
+ .withForm("json")
+ .withSchema(1.0)
+ .withCid(cid)
+ .build();
+
+ *
  */
 
 public class PersonBuilder

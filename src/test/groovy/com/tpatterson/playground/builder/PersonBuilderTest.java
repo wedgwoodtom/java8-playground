@@ -26,4 +26,14 @@ public class PersonBuilderTest
             .build();
     }
 
+    @Test
+    public void testMoreFluentVersion()
+    {
+        FluentPerson tom = new FluentPerson()
+            .firstName("Tom")
+            .lastName("Patterson")
+            .city("Seattle")
+            .salutation("Mr");
+    }
+
 }
