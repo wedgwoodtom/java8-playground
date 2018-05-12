@@ -231,6 +231,14 @@
             <artifactId>ccds-commander</artifactId>
             <version>1.0.4</version>
         </dependency>
+
+        <!-- async client -->
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
