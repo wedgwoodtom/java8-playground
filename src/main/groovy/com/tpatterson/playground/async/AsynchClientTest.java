@@ -8,6 +8,9 @@ public class AsynchClientTest
 {
     // http://www.baeldung.com/async-http-client
 
+    // Also, check this FLuent example from Apache which looks awesome.  https://stackoverflow.com/questions/3142915/how-do-you-create-an-asynchronous-http-request-in-java?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+
     @Test
     public void testGet()
     {
