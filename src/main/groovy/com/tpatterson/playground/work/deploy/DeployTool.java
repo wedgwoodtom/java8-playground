@@ -1,5 +1,6 @@
 package com.tpatterson.playground.work.deploy;
 
+import com.google.common.base.Splitter;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -16,18 +17,28 @@ import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 
 public class DeployTool
 {
 //    String hostList = "phl1tplicws13,phl1tplicws14,phl1tplicws19,phl1tplicws20,phl1tplicws21,phl1tplicws22,phl1tplicws23,phl1tplicws24";
-    String hostList = "lon3tplicws21.lon.corp.theplatform.com,lon3tplicws22.lon.corp.theplatform.com,lon3tplicws23.lon.corp.theplatform.com,lon3tplicws24.lon.corp.theplatform.com,lon3tplicws25.lon.corp.theplatform.com,lon3tplicws26.lon.corp.theplatform.com,lon3tplicws27.lon.corp.theplatform.com,lon3tplicws28.lon.corp.theplatform.com,lon3tplicws29.lon.corp.theplatform.com,lon3tplicws30.lon.corp.theplatform.com";
+//    String hostList = "lon3tplicws21.lon.corp.theplatform.com,lon3tplicws22.lon.corp.theplatform.com,lon3tplicws23.lon.corp.theplatform.com,lon3tplicws24.lon.corp.theplatform.com,lon3tplicws25.lon.corp.theplatform.com,lon3tplicws26.lon.corp.theplatform.com,lon3tplicws27.lon.corp.theplatform.com,lon3tplicws28.lon.corp.theplatform.com,lon3tplicws29.lon.corp.theplatform.com,lon3tplicws30.lon.corp.theplatform.com";
+    String hostList = "phl3tplicws21.prod.theplatform.com,phl3tplicws22.prod.theplatform.com,phl3tplicws23.prod.theplatform.com,phl3tplicws24.prod.theplatform.com,phl3tplicws25.prod.theplatform.com,phl3tplicws26.prod.theplatform.com,phl3tplicws27.prod.theplatform.com,phl3tplicws28.prod.theplatform.com,phl3tplicws29.prod.theplatform.com,phl3tplicws30.prod.theplatform.com";
 
+    List<String> hosts = Collections.EMPTY_LIST;
+
+    @BeforeClass
+    public void init()
+    {
+        hosts = Splitter.on(',')
+                .trimResults()
+                .omitEmptyStrings()
+                .splitToList(hostList);
+    }
 
     @Test
     public void sshToDeleteAdapterCacheDirs()
@@ -36,15 +47,15 @@ public class DeployTool
         String password = "PASSWORD!";
         String command = "sudo rm -rf /app/osgi/adapter-cache";
 
-        String[] hosts = StringUtils.split(hostList, ",");
         for (String host : hosts)
         {
             try
             {
                 if (!StringUtils.isEmpty(host))
                 {
-                    System.out.println("Executing: " + command + " on " + host);
+                    System.out.print(host + " executing: '" + command + "'..." );
                     executeSSHCommand(host, user, password, command);
+                    System.out.println("OK");
                 }
             }
             catch (Exception error)
@@ -58,10 +69,8 @@ public class DeployTool
     @Test
     public void waitUntilAllAreAlive()
     {
-        String[] hosts = StringUtils.split(hostList, ",");
-
         int numberAlive = 0;
-        while (numberAlive != hosts.length)
+        while (numberAlive != hosts.size())
         {
             numberAlive = 0;
             for (String host : hosts)
@@ -70,18 +79,23 @@ public class DeployTool
                 {
                     if (isAlive(lwsHostUrl(host)))
                     {
+                        System.out.println(host + " is alive");
                         numberAlive++;
+                    }
+                    else
+                    {
+                        System.out.println(host + " is NOT alive");
                     }
                 }
                 catch (Exception error)
                 {
-                    System.out.println("Host: " + host + " is not alive, error=" + error.getMessage());
+                    System.out.println(host + " is NOT alive, error=" + error.getMessage());
                 }
             }
 
-            System.out.println(numberAlive + " of " + hosts.length + " are alive.");
+            System.out.println(numberAlive + " of " + hosts.size() + " are alive.");
 
-            if (numberAlive < hosts.length)
+            if (numberAlive < hosts.size())
             {
                 try
                 {
@@ -101,21 +115,22 @@ public class DeployTool
         String releasePid = "drmmonRegular";
         // TODO: Signin bits - must be manually generated now
         String accountId = "http://access.auth.theplatform.com/data/Account/2706202973";
-        String endUserAuth = "eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJkcm1tb25SZWd1bGFyL0xpY2Vuc2VGbGlwTW9uaXRvciIsImlzcyI6IjEiLCJleHAiOjE4NjQwODUwNTAsImlhdCI6MTU0ODcyNTA1MDAyMSwianRpIjoiYTM0M2NkY2ItYzIxYy00Y2ZiLWFkN2UtMmFkY2ZjZTI2YWVjIiwiZGlkIjoiZHJtbW9uUmVndWxhciIsInVubSI6IkxpY2Vuc2VGbGlwTW9uaXRvciIsImN0eCI6IntcInVzZXJOYW1lXCI6XCJMaWNlbnNlRmxpcE1vbml0b3JcIixcImF0dHJpYnV0ZXNcIjp7XCJzdWJzY3JpcHRpb25MZXZlbFwiOlwic3RhbmRhcmRcIn19XG4iLCJvaWQiOm51bGx9.ViExlv7QB7RXRsBA2F3ACXrkY6PUjBDkwZFMH2zAZ26KvW2nygLYrjF8G8Ap1_Kx_jV-61xt5ofekDPngFOzasNpNS1tsETgh2CI1ZvPfZcWqSCs_Q1qOigkTQCEkPddKjYT5YQ9qCHiMv2aErpT0lsvOhidONmv0zZjY2O7pOqdm3FuruDRf6jka_-3brmV_UWJiXHqBHVe94MsLdEuNgAR9JmywzkLqCKAw_GF7hbLhTeU2sVGXrqqSgs3EcMdv0htgtn0QlKq65bl51KES5e8R1umUJ6tpvRuBSMv3-AudlbO2y7A-B7YMLfvaD5wZH5wK9r_zWrrxqe9-6AHsg";
-        String serviceAuth = "Y2OJnU9b0DLiVKCq0jvosfDW8JDU8FCQ";
-
-        String[] hosts = StringUtils.split(hostList, ",");
+//        String endUserAuth = "eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJkcm1tb25SZWd1bGFyL0xpY2Vuc2VGbGlwTW9uaXRvciIsImlzcyI6IjEiLCJleHAiOjE4NjQwODUwNTAsImlhdCI6MTU0ODcyNTA1MDAyMSwianRpIjoiYTM0M2NkY2ItYzIxYy00Y2ZiLWFkN2UtMmFkY2ZjZTI2YWVjIiwiZGlkIjoiZHJtbW9uUmVndWxhciIsInVubSI6IkxpY2Vuc2VGbGlwTW9uaXRvciIsImN0eCI6IntcInVzZXJOYW1lXCI6XCJMaWNlbnNlRmxpcE1vbml0b3JcIixcImF0dHJpYnV0ZXNcIjp7XCJzdWJzY3JpcHRpb25MZXZlbFwiOlwic3RhbmRhcmRcIn19XG4iLCJvaWQiOm51bGx9.ViExlv7QB7RXRsBA2F3ACXrkY6PUjBDkwZFMH2zAZ26KvW2nygLYrjF8G8Ap1_Kx_jV-61xt5ofekDPngFOzasNpNS1tsETgh2CI1ZvPfZcWqSCs_Q1qOigkTQCEkPddKjYT5YQ9qCHiMv2aErpT0lsvOhidONmv0zZjY2O7pOqdm3FuruDRf6jka_-3brmV_UWJiXHqBHVe94MsLdEuNgAR9JmywzkLqCKAw_GF7hbLhTeU2sVGXrqqSgs3EcMdv0htgtn0QlKq65bl51KES5e8R1umUJ6tpvRuBSMv3-AudlbO2y7A-B7YMLfvaD5wZH5wK9r_zWrrxqe9-6AHsg";
+        String endUserAuth = "eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJkcm1tb25SZWd1bGFyL0xpY2Vuc2VGbGlwTW9uaXRvciIsImlzcyI6IjEiLCJleHAiOjE4NjQxNTY5OTksImlhdCI6MTU0ODc5Njk5OTg1NywianRpIjoiYmY2NTgzYjUtMzA1NC00NGFmLTk2NDktMWU2YjZkMzI3NWY1IiwiZGlkIjoiZHJtbW9uUmVndWxhciIsInVubSI6IkxpY2Vuc2VGbGlwTW9uaXRvciIsImN0eCI6IntcInVzZXJOYW1lXCI6XCJMaWNlbnNlRmxpcE1vbml0b3JcIixcImF0dHJpYnV0ZXNcIjp7XCJzdWJzY3JpcHRpb25MZXZlbFwiOlwic3RhbmRhcmRcIn19XG4iLCJvaWQiOm51bGx9.IQmyY8Ik0g7jb-TXHaeOk75y0k7QvhVLZCVHKUW1sAURR4tA751zWB6ZHpI_RjZ8tjjCFLAB_iSedJsMchJjEzeLAp4wyLckPiyd-kTJ9nUzDpM4FcW1dRt-sxZjElQkcSDn9HYFrnQK9eMbMi8wx57HpisAw7tjRNcAfswu3Jrnmc5dl6ysLL5ZsKDCFmhiPTIz8jtwWtSsFN_2eMOCxxfxGnwED2GnTj-vhkt-QFehYdtpTnaJ3z8xfKygi9mZ8AKBUM0TDyGGrbb8VWjp93g-8cn6SLw04EqxN1OzurQnb_GRWwKUgwNPKAqxDzLmDBYQu3chAGr4xOXg3kJvxQ";
+//        String serviceAuth = "Y2OJnU9b0DLiVKCq0jvosfDW8JDU8FCQ";
+        String serviceAuth = "1JKVvtUPfPZMGID-0ssisfCYoIDoADBu";
 
         for (String host : hosts)
         {
             try
             {
+                System.out.print(host + " GLR...");
                 callGLR(host, releasePid, accountId, serviceAuth, endUserAuth);
-                System.out.println("GLR passed for host:"+host);
+                System.out.println("OK");
             }
             catch (Exception error)
             {
-                System.out.println("GLR FAILED for host:"+host+ ", error:"+error.getMessage());
+                System.out.println("FAILED, error:"+error.getMessage());
             }
         }
     }
@@ -123,7 +138,6 @@ public class DeployTool
     @Test
     public void verifyVersion()
     {
-        String[] hosts = StringUtils.split(hostList, ",");
         for (String host : hosts)
         {
             System.out.println(host + " matches version: " + matchesVersion(lwsHostUrl(host), "3.15.0"));
